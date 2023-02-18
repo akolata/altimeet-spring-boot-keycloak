@@ -1,0 +1,32 @@
+server:
+  port: 8082
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9990/auth/realms/altimeet"
+          jwk-set-uri: "http://localhost:9990/auth/realms/altimeet/protocol/openid-connect/certs"
+          jws-algorithms: RS256
+      client:
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: altimeet-test-client
+            client-secret: rF5qhDVTQqA3zoqiuO7dAv3BT5PsFysJ
+            authorization-grant-type: client_credentials
+            scope:
+              - openid
+              - altimeet-system:first-service:test-api-get
+
+        provider:
+          keycloak:
+            token-uri: http://localhost:9990/auth/realms/altimeet/protocol/openid-connect/token
+            user-info-uri: http://localhost:9990/auth/realms/altimeet/protocol/openid-connect/userinfo
+
+logging:
+  level:
+    org:
+      springframework: DEBUG
+    reactor.netty.http.client.HttpClient: DEBUG
