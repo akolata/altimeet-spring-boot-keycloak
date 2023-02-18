@@ -1,7 +1,8 @@
-package pl.akolata.keycloak.firstservice;
+package pl.akolata.keycloak.firstservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -10,6 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
 class SecurityConfiguration {
 
     @Bean
@@ -23,6 +25,8 @@ class SecurityConfiguration {
                     .antMatchers("/api/first-service/private-resource").authenticated()
                     .antMatchers("/api/first-service/private-resource-role-protected").hasRole("altimeet_role")
                     .antMatchers("/api/first-service/private-resource-scope-protected").hasAuthority("SCOPE_altimeet_test_scope")
+                    .antMatchers("/api/first-service/private-resource-for-second-service")
+                    .hasAuthority("SCOPE_altimeet-system:first-service:test-api-get")
                     .anyRequest().authenticated()
             )
             .oauth2ResourceServer().jwt().jwtAuthenticationConverter(jwtAuthenticationConverter);

@@ -28,11 +28,7 @@ import pl.akolata.keycloak.secondservice.api.model.StringResponse;
 class SecondServiceApi {
     private static final String FIRST_SERVICE_ENDPOINT_URL = "http://localhost:8081/api/first-service/private-resource-for-second-service";
 
-    //    private final WebClient webClient;
-    //    private final OAuth2AuthorizedClientService oauth2ClientService;
     private final OAuth2AuthorizedClientManager oAuth2AuthorizedClientManager;
-    //    @Autowired
-    //    private AuthorizedClientServiceOAuth2AuthorizedClientManager authorizedClientServiceAndManager;
 
     @GetMapping(value = "/call-first-service-pass-token")
     public ResponseEntity<ServerToServerResponse> callFirstServicePassToken() {
@@ -52,8 +48,6 @@ class SecondServiceApi {
     @GetMapping(value = "/call-first-service-as-service-client")
     public ResponseEntity<ServerToServerResponse> callSecondServiceAsServiceClient() {
         log.info("GET /api/second-service/call-first-service-as-service-client");
-
-        //        oauth2ClientService.loadAuthorizedClient("keycloak", "altimeet-test-client");
 
         OAuth2AuthorizeRequest authorizeRequest =
             OAuth2AuthorizeRequest

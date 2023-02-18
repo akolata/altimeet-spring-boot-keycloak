@@ -1,23 +1,8 @@
-# @name /api/first-service/public-resource - without Access Token
-GET {{firstServiceUrl}}/api/first-service/public-resource
-
-###
-
-# @name /api/first-service/private-resource - without Access Token
-GET {{firstServiceUrl}}/api/first-service/private-resource
-
-###
-
-# @name /api/first-service/private-resource - with Access Token
-GET {{firstServiceUrl}}/api/first-service/private-resource
+# @name /api/second-service/call-first-service-pass-token
+GET {{secondServiceUrl}}/api/second-service/call-first-service-pass-token
 Authorization: Bearer {{access_token}}
 
 ###
-# @name /api/first-service/private-resource-role-protected
-GET {{firstServiceUrl}}/api/first-service/private-resource-role-protected
-Authorization: Bearer {{access_token}}
-
-###
-# @name /api/first-service/private-resource-scope-protected
-GET {{firstServiceUrl}}/api/first-service/private-resource-scope-protected
+# @name /api/second-service/call-first-service-as-service-client
+GET {{secondServiceUrl}}/api/second-service/call-first-service-as-service-client
 Authorization: Bearer {{access_token}}

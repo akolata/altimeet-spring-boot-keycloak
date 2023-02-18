@@ -1,4 +1,4 @@
-package pl.akolata.keycloak.firstservice;
+package pl.akolata.keycloak.firstservice.api;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -6,10 +6,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.akolata.keycloak.firstservice.api.model.JwtInfo;
+import pl.akolata.keycloak.firstservice.SecurityUtil;
+import pl.akolata.keycloak.firstservice.api.model.StringResponse;
+import pl.akolata.keycloak.firstservice.api.model.UserInfoResponse;
 
 @RestController
 @RequestMapping(value = "/api/first-service")
-class ProtectedController {
+class FirstServiceApi {
 
     @GetMapping(value = "/public-resource")
     public ResponseEntity<StringResponse> getPublicResource() {
@@ -38,5 +42,10 @@ class ProtectedController {
     public ResponseEntity<StringResponse> getPrivateScopeProtectedResource() {
         StringResponse response = StringResponse.builder().message("Message from the private, scope-protected resource").build();
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping(value = "/private-resource-for-second-service")
+    public ResponseEntity<JwtInfo> getPrivateResourceForSecondService() {
+        return ResponseEntity.ok(JwtInfo.fromAccessToken("In /api/first-service/private-resource-for-second-service endpoint"));
     }
 }

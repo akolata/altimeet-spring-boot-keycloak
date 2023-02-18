@@ -30,7 +30,7 @@ public class SecurityUtil {
     }
 
     @SneakyThrows
-    String getAuthenticationAsJson() {
+    public String getAuthenticationAsJson() {
         return Optional.ofNullable(SecurityContextHolder.getContext())
             .map(SecurityContext::getAuthentication)
             .map(authentication -> {
@@ -43,14 +43,14 @@ public class SecurityUtil {
             .orElse("{}");
     }
 
-    String getAuthenticationClass() {
+    public String getAuthenticationClass() {
         return Optional.ofNullable(SecurityContextHolder.getContext())
             .map(SecurityContext::getAuthentication)
             .map(clz -> clz.getClass().getSimpleName())
             .orElse("");
     }
 
-    Optional<String> getCustomClaim(@NonNull String claim) {
+    public Optional<String> getCustomClaim(@NonNull String claim) {
         return Optional.ofNullable(SecurityContextHolder.getContext()).map(SecurityContext::getAuthentication)
             .filter(authentication -> authentication instanceof JwtAuthenticationToken)
             .map(authentication -> (JwtAuthenticationToken) authentication)

@@ -1,4 +1,4 @@
-package pl.akolata.keycloak.firstservice;
+package pl.akolata.keycloak.firstservice.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
