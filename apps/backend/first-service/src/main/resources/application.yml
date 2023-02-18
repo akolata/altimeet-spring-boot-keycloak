@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9990/auth/realms/altimeet"
+          jwk-set-uri: "http://localhost:9990/auth/realms/altimeet/protocol/openid-connect/certs"
+          jws-algorithms: RS256
+
+
+logging:
+  level:
+    org:
+      springframework: DEBUG

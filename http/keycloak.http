@@ -1,0 +1,25 @@
+# @name get access_token for altimeet-test-client using client_credentials
+POST {{keycloakUrl}}/auth/realms/altimeet/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id={{confidentialClientId}}&client_secret={{confidentialClientSecret}}&scope=openid profile
+
+###
+
+# @name get access_token for altimeet-test-client using client_credentials - forbidden scope
+POST {{keycloakUrl}}/auth/realms/altimeet/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id={{confidentialClientId}}&client_secret={{confidentialClientSecret}}&scope=openid profile email
+
+###
+
+# @name get access_token for test-user using password
+POST {{keycloakUrl}}/auth/realms/altimeet/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password&client_id={{confidentialClientId}}&client_secret={{confidentialClientSecret}}&username={{keycloakTestUser}}&password={{keycloakTestUserPassword}}&scope=openid altimeet_test_scope
+
+> {%
+    client.global.set("access_token", response.body.access_token);
+%}
