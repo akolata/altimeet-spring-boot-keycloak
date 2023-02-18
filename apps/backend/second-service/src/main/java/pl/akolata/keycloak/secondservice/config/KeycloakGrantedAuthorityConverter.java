@@ -1,4 +1,4 @@
-package pl.akolata.keycloak.secondservice;
+package pl.akolata.keycloak.secondservice.config;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;

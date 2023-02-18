@@ -1,4 +1,4 @@
-package pl.akolata.keycloak.secondservice;
+package pl.akolata.keycloak.secondservice.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ServerToServerResponse {
-    private String firstServerMessage;
-    private String secondServerMessage;
+    private JwtInfo jwtInfoInFirstServer;
+    private JwtInfo jwtInfoInSecondServer;
 }

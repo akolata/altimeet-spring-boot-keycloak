@@ -1,4 +1,4 @@
-package pl.akolata.keycloak.secondservice;
+package pl.akolata.keycloak.secondservice.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -7,7 +7,6 @@ import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.client.*;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
@@ -20,8 +19,6 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
-
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -69,7 +66,7 @@ class SecurityConfiguration {
         @Value("${spring.security.oauth2.client.provider.keycloak.token-uri}") String token_uri,
         @Value("${spring.security.oauth2.client.registration.keycloak.client-id}") String client_id,
         @Value("${spring.security.oauth2.client.registration.keycloak.client-secret}") String client_secret,
-        //        @Value("${spring.security.oauth2.client.registration.keycloak.scope}") Object scope,
+        //        @Value("${spring.security.oauth2.client.registration.keycloak.scope:[]}") Set<String> scope,
         @Value("${spring.security.oauth2.client.registration.keycloak.authorization-grant-type}") String authorizationGrantType
     ) {
         return ClientRegistration

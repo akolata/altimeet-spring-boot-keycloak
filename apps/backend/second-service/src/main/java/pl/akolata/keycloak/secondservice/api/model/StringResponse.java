@@ -1,4 +1,4 @@
-package pl.akolata.keycloak.secondservice;
+package pl.akolata.keycloak.secondservice.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
