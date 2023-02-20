@@ -1,0 +1,12 @@
+{
+  "/api/first-service/*": {
+    "target": "http://localhost:8081",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/api/second-service/*": {
+    "target": "http://localhost:8082",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
