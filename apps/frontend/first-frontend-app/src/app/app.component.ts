@@ -68,6 +68,7 @@ export class AppComponent implements OnInit {
   }
 
   callSecondServicePassToken() {
+    // scope 'altimeet-system:first-service:test-api-get' is missing
     const headers: HttpHeaders = new HttpHeaders().set('Authorization', this.oauthService.authorizationHeader())
     this.httpClient.get<any>('/api/second-service/call-first-service-pass-token', {headers})
       .subscribe(

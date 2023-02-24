@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -23,8 +24,8 @@ public class JwtInfo {
 
     public static JwtInfo fromAccessToken(String description) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!authentication.isAuthenticated()) {
-            return JwtInfo.builder().build();
+        if (authentication == null || (authentication instanceof AnonymousAuthenticationToken) || !authentication.isAuthenticated()) {
+            return JwtInfo.builder().description(description).build();
         }
 
         JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) authentication;

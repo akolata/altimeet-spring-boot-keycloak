@@ -15,7 +15,7 @@ import java.util.stream.Stream;
  * org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter
  * org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter
  */
-public class KeycloakGrantedAuthorityConverter implements Converter<Jwt, Collection<GrantedAuthority>> {
+class KeycloakGrantedAuthorityConverter implements Converter<Jwt, Collection<GrantedAuthority>> {
     private static final String ROLE_PREFIX = "ROLE_";
     private static final String SCOPE_PREFIX = "SCOPE_";
 

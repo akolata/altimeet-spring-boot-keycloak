@@ -27,3 +27,6 @@ spring:
             authorization-uri: http://localhost:9990/auth/realms/altimeet/protocol/openid-connect/auth
             jwk-set-uri: http://localhost:9990/auth/realms/altimeet/protocol/openid-connect/certs
             user-name-attribute: preferred_username
+logging:
+  level:
+    root: debug

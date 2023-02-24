@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import pl.akolata.keycloak.secondservice.api.model.JwtInfo;
 import pl.akolata.keycloak.secondservice.api.model.ServerToServerResponse;
-import pl.akolata.keycloak.secondservice.api.model.StringResponse;
 
 @Slf4j
 @RestController
@@ -70,7 +69,7 @@ class SecondServiceApi {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer " + authToken);
 
-        HttpEntity<StringResponse> request = new HttpEntity<>(headers);
+        HttpEntity<JwtInfo> request = new HttpEntity<>(headers);
 
         ResponseEntity<JwtInfo> responseEntity = new RestTemplate().exchange(
             FIRST_SERVICE_ENDPOINT_URL,
